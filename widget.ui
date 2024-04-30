@@ -15,9 +15,16 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QLabel" name="label_17">
+     <property name="text">
+      <string>Ontario Pre-Triage Application for HealthCare Facilities</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -102,9 +109,9 @@
       <widget class="QPushButton" name="GenerateTicket">
        <property name="geometry">
         <rect>
-         <x>390</x>
-         <y>240</y>
-         <width>83</width>
+         <x>380</x>
+         <y>290</y>
+         <width>111</width>
          <height>29</height>
         </rect>
        </property>
@@ -115,14 +122,14 @@
       <widget class="QPushButton" name="Time">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>240</y>
+         <x>540</x>
+         <y>290</y>
          <width>83</width>
          <height>29</height>
         </rect>
        </property>
        <property name="text">
-        <string>TIme</string>
+        <string>Time</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBox">
@@ -240,6 +247,19 @@
        </property>
        <property name="text">
         <string>Symptoms</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Submit_Triage_test">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>240</y>
+         <width>83</width>
+         <height>29</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Submit</string>
        </property>
       </widget>
      </widget>
@@ -469,44 +489,6 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tab_3">
-      <attribute name="title">
-       <string>Exit</string>
-      </attribute>
-      <widget class="QPushButton" name="Terminate">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>120</y>
-         <width>83</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Terminate </string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_16">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>40</y>
-         <width>63</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Exit</string>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_17">
-     <property name="text">
-      <string>Ontario Pre-Triage Application for HealthCare Facilities</string>
-     </property>
     </widget>
    </item>
   </layout>
