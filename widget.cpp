@@ -12,6 +12,11 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
     connect(ui->Submit, &QPushButton::clicked, this, &Widget::on_Submit_clicked);
     connect(ui->Cancel, &QPushButton::clicked, this, &Widget::on_Cancel_clicked);
+    connect(ui->Submit_Triage_test, &QPushButton::clicked, this, &Widget::on_Submit_Triage_test_clicked);
+    connect(ui->GenerateTicket, &QPushButton::clicked, this, &Widget::on_GenerateTicket_clicked);
+    connect(ui->Time, &QPushButton::clicked, this, &Widget::on_Time_clicked);
+    connect(ui->checkBox_Contagion, &QCheckBox::stateChanged, this, &Widget::on_checkBox_Contagion_stateChanged);
+    connect(ui->checkBox_Triage, &QCheckBox::stateChanged, this, &Widget::on_checkBox_Triage_stateChanged);
 }
 
 Widget::~Widget()
@@ -71,20 +76,19 @@ void Widget::on_Submit_Triage_test_clicked()
     QString lastName = ui->lastName_Triage->text();
     QString symptoms = ui->Symptoms_Triage->text();
 
-    qDebug() << "First Name:" << firstName;
-    qDebug() << "Last Name:" << lastName;
-    qDebug() << "Symptoms: " << symptoms;
+    ui->initial_Triage->setText(QString("%1 %2").arg(firstName).arg(lastName));
+
+
 
 }
 void Widget::on_GenerateTicket_clicked()
 {
 
     int ticketNumber = rand() % 1000 + 1;
+    ui->GenerateTicket1->setText(QString("%1").arg(ticketNumber));
 
-    qDebug() << "Ticket Generated:" << ticketNumber;
 
 
-    ui->GenerateTicket->setText(QString("Generate Ticket").arg(ticketNumber));
 }
 
 
@@ -92,9 +96,8 @@ void Widget::on_Time_clicked()
 {
     int waitTime = rand() % 120 + 1;
 
-    qDebug() << "Estimated Wait Time:" << waitTime << "minutes";
 
-    ui->Time->setText(QString("Time").arg(waitTime));
+    ui->waitTime_Triage->setText(QString("%1").arg(waitTime));
 
 }
 
@@ -102,14 +105,37 @@ void Widget::on_Time_clicked()
 void Widget::on_CallNext_clicked()
 {
 
+    //After pushing this button, we can call another patient from the register tab
+
 }
 
 
-void Widget::on_Exit_clicked()
+void Widget::on_Exit_clicked(){
+
+    QApplication::quit();
+
+}
+
+
+
+//Working on a checkbox
+
+void Widget::on_checkBox_Contagion_stateChanged(int arg1)
 {
 
+    if (arg1 == Qt::Checked) {
+        ui->checkBox_Triage->setChecked(false);
+    }
 }
 
+
+void Widget::on_checkBox_Triage_stateChanged(int arg1)
+{
+
+    if (arg1 == Qt::Checked) {
+        ui->checkBox_Contagion->setChecked(false);
+    }
+}
 
 
 

@@ -38,6 +38,14 @@ private slots:
     void on_Exit_clicked();
 
     void on_Submit_Triage_test_clicked();
+//CheckBox
+    void on_checkBox_Contagion_stateChanged(int arg1);
+
+    void on_checkBox_Triage_stateChanged(int arg1);
+
+
+
+
 
 private:
     Ui::Widget *ui;
