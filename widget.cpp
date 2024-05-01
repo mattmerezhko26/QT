@@ -58,9 +58,13 @@ void Widget::on_Submit_clicked()
 {
     QString firstName = ui->firstName_ContagionTest->text();
     QString lastName = ui->LastName_ContagionTest->text();
+    ui->initial_Triage->setText(QString("%1 %2").arg(firstName).arg(lastName));
+    int ticketNumber = rand() % 1000 + 1;
+    ui->GenerateTicket1->setText(QString("%1").arg(ticketNumber));
+    int waitTime = rand() % 120 + 1;
+    ui->waitTime_Triage->setText(QString("%1").arg(waitTime));
 
-    qDebug() << "First Name:" << firstName;
-    qDebug() << "Last Name:" << lastName;
+
 }
 
 
@@ -75,8 +79,7 @@ void Widget::on_Submit_Triage_test_clicked()
     QString firstName = ui->FirstName_Triage->text();
     QString lastName = ui->lastName_Triage->text();
     QString symptoms = ui->Symptoms_Triage->text();
-
-    ui->initial_Triage->setText(QString("%1 %2").arg(firstName).arg(lastName));
+    ui->initial_Triage1->setText(QString("%1 %2").arg(firstName).arg(lastName));
 
 
 
@@ -85,9 +88,7 @@ void Widget::on_GenerateTicket_clicked()
 {
 
     int ticketNumber = rand() % 1000 + 1;
-    ui->GenerateTicket1->setText(QString("%1").arg(ticketNumber));
-
-
+    ui->GenerateTicket2->setText(QString("%1").arg(ticketNumber));
 
 }
 
@@ -96,16 +97,33 @@ void Widget::on_Time_clicked()
 {
     int waitTime = rand() % 120 + 1;
 
-
-    ui->waitTime_Triage->setText(QString("%1").arg(waitTime));
+    ui->waitTime_Triage1->setText(QString("%1").arg(waitTime));
 
 }
 
 
-void Widget::on_CallNext_clicked()
+void Widget::on_CallNext_clicked() //Fix issues here
 {
 
-    //After pushing this button, we can call another patient from the register tab
+
+    // Display the information of the Triage test patient in initial_Triage3, GenerateTicket4, and waitTime_Triage3
+    QString firstName1 = ui->FirstName_Triage->text();
+    QString lastName1 = ui->lastName_Triage->text();
+    ui->initial_Triage3->setText(QString("%1 %2").arg(firstName1).arg(lastName1));
+    int ticketNumber1 = rand() % 1000 + 1;
+    ui->GenerateTicket4->setText(QString("%1").arg(ticketNumber1));
+    int waitTime1 = rand() % 120 + 1;
+    ui->waitTime_Triage3->setText(QString("%1").arg(waitTime1));
+
+
+    // Display the information of the Contagion test patient in initial_Triage2, GenerateTicket3, and waitTime_Triage2
+    QString firstName = ui->firstName_ContagionTest->text();
+    QString lastName = ui->LastName_ContagionTest->text();
+    ui->initial_Triage2->setText(QString("%1 %2").arg(firstName).arg(lastName));
+    int ticketNumber = rand() % 1000 + 1;
+    ui->GenerateTicket3->setText(QString("%1").arg(ticketNumber));
+    int waitTime = rand() % 120 + 1;
+    ui->waitTime_Triage2->setText(QString("%1").arg(waitTime));
 
 }
 
@@ -116,25 +134,21 @@ void Widget::on_Exit_clicked(){
 
 }
 
-
-
 //Working on a checkbox
 
 void Widget::on_checkBox_Contagion_stateChanged(int arg1)
 {
 
-    if (arg1 == Qt::Checked) {
-        ui->checkBox_Triage->setChecked(false);
-    }
+    ui->FirstName_Triage->setEnabled(arg1 != Qt::Checked);
+    ui->lastName_Triage->setEnabled(arg1 != Qt::Checked);
+    ui->Symptoms_Triage->setEnabled(arg1 != Qt::Checked);
 }
 
 
 void Widget::on_checkBox_Triage_stateChanged(int arg1)
 {
-
-    if (arg1 == Qt::Checked) {
-        ui->checkBox_Contagion->setChecked(false);
-    }
+    ui->firstName_ContagionTest->setEnabled(arg1 != Qt::Checked);
+    ui->LastName_ContagionTest->setEnabled(arg1 != Qt::Checked);
 }
 
 
