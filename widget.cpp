@@ -15,8 +15,7 @@ Widget::Widget(QWidget *parent)
     connect(ui->Submit_Triage_test, &QPushButton::clicked, this, &Widget::on_Submit_Triage_test_clicked);
     connect(ui->GenerateTicket, &QPushButton::clicked, this, &Widget::on_GenerateTicket_clicked);
     connect(ui->Time, &QPushButton::clicked, this, &Widget::on_Time_clicked);
-    connect(ui->checkBox_Contagion, &QCheckBox::stateChanged, this, &Widget::on_checkBox_Contagion_stateChanged);
-    connect(ui->checkBox_Triage, &QCheckBox::stateChanged, this, &Widget::on_checkBox_Triage_stateChanged);
+
 }
 
 Widget::~Widget()
@@ -134,22 +133,11 @@ void Widget::on_Exit_clicked(){
 
 }
 
-//Working on a checkbox
 
-void Widget::on_checkBox_Contagion_stateChanged(int arg1)
+void Widget::on_StartOver_button_clicked()
 {
-
-    ui->FirstName_Triage->setEnabled(arg1 != Qt::Checked);
-    ui->lastName_Triage->setEnabled(arg1 != Qt::Checked);
-    ui->Symptoms_Triage->setEnabled(arg1 != Qt::Checked);
+    ui->FirstName_Triage->clear();
+    ui->lastName_Triage->clear();
+    ui->Symptoms_Triage->clear();
 }
-
-
-void Widget::on_checkBox_Triage_stateChanged(int arg1)
-{
-    ui->firstName_ContagionTest->setEnabled(arg1 != Qt::Checked);
-    ui->LastName_ContagionTest->setEnabled(arg1 != Qt::Checked);
-}
-
-
 
