@@ -4,7 +4,7 @@
 #include <QLineEdit>
 #include <QDebug>
 #include <QPushButton>
-
+#include <QRandomGenerator>
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -104,25 +104,17 @@ void Widget::on_Time_clicked()
 void Widget::on_CallNext_clicked() //Fix issues here
 {
 
+    QString firstNameTriage = ui->FirstName_Triage->text();
+    QString lastNameTriage = ui->lastName_Triage->text();
+    ui->initial_Triage3->setText(QString("%1 %2").arg(firstNameTriage).arg(lastNameTriage));
+    ui->GenerateTicket4->setText(QString::number(QRandomGenerator::global()->bounded(1, 1001))); // Unique ticket number between 1 and 1000
+    ui->waitTime_Triage3->setText(QString::number(QRandomGenerator::global()->bounded(1, 121))); // Random wait time between 1 and 120
 
-    // Display the information of the Triage test patient in initial_Triage3, GenerateTicket4, and waitTime_Triage3
-    QString firstName1 = ui->FirstName_Triage->text();
-    QString lastName1 = ui->lastName_Triage->text();
-    ui->initial_Triage3->setText(QString("%1 %2").arg(firstName1).arg(lastName1));
-    int ticketNumber1 = rand() % 1000 + 1;
-    ui->GenerateTicket4->setText(QString("%1").arg(ticketNumber1));
-    int waitTime1 = rand() % 120 + 1;
-    ui->waitTime_Triage3->setText(QString("%1").arg(waitTime1));
-
-
-    // Display the information of the Contagion test patient in initial_Triage2, GenerateTicket3, and waitTime_Triage2
-    QString firstName = ui->firstName_ContagionTest->text();
-    QString lastName = ui->LastName_ContagionTest->text();
-    ui->initial_Triage2->setText(QString("%1 %2").arg(firstName).arg(lastName));
-    int ticketNumber = rand() % 1000 + 1;
-    ui->GenerateTicket3->setText(QString("%1").arg(ticketNumber));
-    int waitTime = rand() % 120 + 1;
-    ui->waitTime_Triage2->setText(QString("%1").arg(waitTime));
+    QString firstNameContagion = ui->firstName_ContagionTest->text();
+    QString lastNameContagion = ui->LastName_ContagionTest->text();
+    ui->initial_Triage2->setText(QString("%1 %2").arg(firstNameContagion).arg(lastNameContagion));
+    ui->GenerateTicket3->setText(QString::number(QRandomGenerator::global()->bounded(1, 1001))); // Unique ticket number between 1 and 1000
+    ui->waitTime_Triage2->setText(QString::number(QRandomGenerator::global()->bounded(1, 121))); // Random wait time between 1 and 120
 
 }
 
